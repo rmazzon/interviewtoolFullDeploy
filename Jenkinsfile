@@ -160,10 +160,10 @@ pipeline {
                 
                 
                 
-                
+                }
                 sh 'echo test'
 
-                }
+               
             }
 
         }
