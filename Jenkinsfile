@@ -131,7 +131,7 @@ pipeline {
             steps {
 
                 build job: 'frontend', parameters: [
-                    string(name: 'deploy', value: 'true')
+                    string(name: 'deploy', value: 'true'),
                     string(name: 'destroy', value: 'false')
                 ]
             }
