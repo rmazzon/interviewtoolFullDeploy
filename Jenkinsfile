@@ -43,7 +43,7 @@ pipeline {
             steps {
 
                 build job: 'gateway', parameters: [
-                    boolean(name: 'deploy', value: 'true')
+                    Boolean(name: 'deploy', value: 'true')
                 ]
             }
 
@@ -61,7 +61,7 @@ pipeline {
             steps {
 
                 build job: 'user', parameters: [
-                    boolean(name: 'deploy', value: 'true')
+                    Boolean(name: 'deploy', value: 'true')
                 ]
             }
 
@@ -79,7 +79,7 @@ pipeline {
             steps {
 
                 build job: 'question', parameters: [
-                    boolean(name: 'deploy', value: 'true')
+                    Boolean(name: 'deploy', value: 'true')
                 ]
             }
 
@@ -97,7 +97,7 @@ pipeline {
             steps {
 
                 build job: 'quiz', parameters: [
-                    boolean(name: 'deploy', value: 'true')
+                    Boolean(name: 'deploy', value: 'true')
                 ]
             }
 
@@ -115,7 +115,7 @@ pipeline {
             steps {
 
                 build job: '', parameters: [
-                    boolean(name: 'deploy', value: 'true')
+                    Boolean(name: 'deploy', value: 'true')
                 ]
             }
 
@@ -131,8 +131,8 @@ pipeline {
             steps {
 
                 build job: 'frontend', parameters: [
-                    boolean(name: 'deploy', value: 'true')
-                    boolean(name: 'deploy', value: 'false')
+                    Boolean(name: 'deploy', value: 'true')
+                    Boolean(name: 'deploy', value: 'false')
                 ]
             }
 
