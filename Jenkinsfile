@@ -114,7 +114,7 @@ pipeline {
 
             steps {
 
-                build job: '', parameters: [
+                build job: 'template', parameters: [
                     string(name: 'deploy', value: 'true')
                 ]
             }
@@ -147,7 +147,23 @@ pipeline {
                 }
             }
             steps {
+                
+                /*withCredentials([aws(credentialsId: 'aws-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    sh 'aws eks --region us-east-1 update-kubeconfig --name rmazzon-eks-cluster'
+
+                    echo "Populating user database"
+                    withCredentials([usernamePassword(credentialsId: 'DB', usernameVariable: 'USER', passwordVariable: 'SECRET')]) {
+                            sh 'kubectl exec -i ' + deploymentDB + ' -n interview-tool -- mysql --password=$SECRET --user=$USER --database=' + user + '_db < query/user.sql'
+                        }*/
+
+                
+                
+                
+                
+                
                 sh 'echo test'
+
+                }
             }
 
         }
