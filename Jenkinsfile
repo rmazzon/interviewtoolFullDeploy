@@ -160,7 +160,7 @@ pipeline {
                             script: 'kubectl -n interview-tool get pod | grep "db-user" | awk \'{ print $1 }\''
                         ).trim()
                         withCredentials([usernamePassword(credentialsId: 'DB', usernameVariable: 'USER', passwordVariable: 'SECRET')]) {
-                            sh 'kubectl exec -i ' + deploymentDB + ' -n interview-tool -- mysql --password=$SECRET --user=$USER --database=' + user + '_db < query/user.sql'
+                            sh 'kubectl exec -i ' + deploymentDB + ' -n interview-tool -- mysql --password=$SECRET --user=user --database=' + user + '_db < query/user.sql'
                         }
                     
                         echo "Populating template database"
