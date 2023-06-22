@@ -17,7 +17,7 @@ pipeline {
             steps {
                 withCredentials([aws(credentialsId: 'aws-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh 'kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml'
-                    sh 'kubectl apply -f :/dashboard/admin-user.yaml'
+                    sh 'kubectl apply -f ./dashboard/admin-user.yaml'
                 }
             }
         }
