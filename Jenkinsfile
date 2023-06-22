@@ -161,7 +161,7 @@ pipeline {
                         }
                     
                     echo "Populating template database"
-                    def deploymentDB = sh(
+                    deploymentDB = sh(
                             returnStdout: true,
                             script: 'kubectl -n interview-tool get pod | grep "db-template" | awk \'{ print $1 }\''
                         ).trim()
@@ -170,7 +170,7 @@ pipeline {
                         }
 
                     echo "Populating quiz database"
-                    def deploymentDB = sh(
+                    deploymentDB = sh(
                             returnStdout: true,
                             script: 'kubectl -n interview-tool get pod | grep "db-quiz" | awk \'{ print $1 }\''
                         ).trim()
@@ -179,7 +179,7 @@ pipeline {
                         }
 
                     echo "Populating question database"
-                    def deploymentDB = sh(
+                    deploymentDB = sh(
                             returnStdout: true,
                             script: 'kubectl -n interview-tool get pod | grep "db-question" | awk \'{ print $1 }\''
                         ).trim()
