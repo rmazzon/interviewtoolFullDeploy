@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Context') {
+            steps {
+                withCredentials([aws(credentialsId: 'aws-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    sh 'aws eks --region us-east-1 update-kubeconfig --name rmazzon-eks-cluster'
+                    sh 'kubectl get namespace | grep -q "^dashboard-kubernetes " || kubectl create namespace dashboard-kubernetes'
+                    
+                }
+            }
+        }
+        
+        stage('Apply manifests') {
+            steps {
+                withCredentials([aws(credentialsId: 'aws-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    sh 'kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml'
+                    sh 'kubectl apply -f admin-user.yaml'
+                }
+            }
+        }
+        
+    }
+}
