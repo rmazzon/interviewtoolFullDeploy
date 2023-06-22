@@ -1,4 +1,6 @@
 pipeline {
+    
+    agent any
 
     parameters {
         booleanParam(name: 'user', defaultValue: true, description: 'Deploy the user microservice?')
@@ -144,7 +146,7 @@ pipeline {
                 }
             }
             steps {
-
+                sh 'echo test'
             }
 
         }
