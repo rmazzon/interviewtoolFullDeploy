@@ -154,13 +154,13 @@ pipeline {
                     echo "Populating user database"
                     withCredentials([usernamePassword(credentialsId: 'DB', usernameVariable: 'USER', passwordVariable: 'SECRET')]) {
                             sh 'kubectl exec -i ' + deploymentDB + ' -n interview-tool -- mysql --password=$SECRET --user=$USER --database=' + user + '_db < query/user.sql'
-                        }*/
+                        }
 
                 
                 
                 
                 
-                }
+                }*/
                 sh 'echo test'
 
                
